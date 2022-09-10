@@ -1,10 +1,12 @@
 import "./App.css";
-import Map from "./components/Map/Map";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Main from "./components/Main/Main";
 
 export default function App() {
   return (
     <>
-      <Map latitude={51.505} longtitude={-0.09} />
+    <Sidebar/>
+    <Main/>
     </>
   );
 }
