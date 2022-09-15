@@ -3,8 +3,9 @@ import "./App.css";
 import { getMapData } from "./store/map-actions";
 import Main from "./components/Main/Main";
 import Notification from "./components/UI/Notification";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Navbar from "./components/Navbar/Navbar";
 import { useEffect } from "react";
+import { StyledContainer } from "./components/Main/Main.style";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -16,16 +17,18 @@ export default function App() {
 
   return (
     <>
-    {notification && (
-        <Notification
-          status={notification.status}
-          title={notification.title}
-          message={notification.message}
-          visibility={notification.visibility}
-        />
-      )}
-    <Sidebar/>
-    <Main/>
+      <Navbar />
+      <StyledContainer>
+        {notification && (
+          <Notification
+            status={notification.status}
+            title={notification.title}
+            message={notification.message}
+            visibility={notification.visibility}
+          />
+        )}
+        <Main />
+      </StyledContainer>
     </>
   );
 }

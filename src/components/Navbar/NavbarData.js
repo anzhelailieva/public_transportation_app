@@ -1,4 +1,4 @@
-export const SidebarData = [
+export const NavbarData = [
   {
     title: "Home",
     icon: "",
@@ -6,9 +6,9 @@ export const SidebarData = [
   },
 
   {
-    title: "Line",
+    title: "Lines",
     icon: "",
-    path: "/line",
+    path: "/lines",
   },
 
   {

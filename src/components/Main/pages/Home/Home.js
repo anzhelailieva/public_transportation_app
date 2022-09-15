@@ -1,10 +1,23 @@
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getMapData } from "../../../../store/map-actions";
 import Map from "../../../Map/Map";
+import Lines from "../Lines/Lines";
+import React from "react";
+import { useEffect } from "react";
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const stopsCoordinates = useSelector((state) => state.map.stops);
+  const stopsSegments = useSelector((state) => state.map.segments);
+
+  useEffect(() => {
+    dispatch(getMapData());
+  }, [dispatch]);
+
   return (
     <>
-      <Map latitude={51.505} longtitude={-0.09} />
+      <Lines />
+      <Map coordinates={stopsCoordinates} segments={stopsSegments} />
     </>
   );
 }

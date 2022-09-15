@@ -1,32 +1,53 @@
-import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, Polyline } from "react-leaflet";
+import L from "leaflet";
 import PropTypes from "prop-types";
 import "./Map.css";
 
-export default function Map ({ latitude, longtitude }) {
+export default function Map({ coordinates, segments }) {
+  const limeOptions = { color: "lime" };
+  const markerIcon = L.icon({
+    iconUrl: require("../../icons/bus-stop.png"),
+    iconSize: [35, 35],
+  });
 
   return (
     <>
       <MapContainer
-        center={[latitude, longtitude]}
-        zoom={13}
+        center={[42.698334, 23.319941]}
+        zoom={12}
         scrollWheelZoom={true}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
+        {coordinates.map((item, index) => {
+          if (item.location.lat && item.location.lon) {
+            return (
+              <Marker
+                key={`${item.id}-${index}`}
+                icon={markerIcon}
+                position={[item.location.lat, item.location.lon]}
+              />
+            );
+          }
+          return null;
+        })}
+        <Polyline
+          pathOptions={limeOptions}
+          positions={segments}
+          eventHandlers={{
+            click: (e) => {
+              console.log("marker clicked", e);
+            },
+          }}
+        />
       </MapContainer>
-      <div>Lines:</div>
     </>
   );
-};
+}
 
 Map.propTypes = {
-  longtitude: PropTypes.number.isRequired,
-  latitude: PropTypes.number.isRequired,
+  coordinates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  segments: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
