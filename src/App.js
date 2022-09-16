@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import { getMapData } from "./store/map-actions";
+import Main from "./components/Main/Main";
+import Navbar from "./components/Navbar/Navbar";
+import Notification from "./components/UI/Notification";
+import { StyledContainer } from "./components/Main/Main.style";
+import { useEffect } from "react";
 
-function App() {
+export default function App() {
+  const dispatch = useDispatch();
+  const notification = useSelector((state) => state.ui.notification);
+
+  useEffect(() => {
+    dispatch(getMapData());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <StyledContainer>
+        {notification && (
+          <Notification
+            status={notification.status}
+            title={notification.title}
+            message={notification.message}
+            visibility={notification.visibility}
+          />
+        )}
+        <Main />
+      </StyledContainer>
+    </>
   );
 }
-
-export default App;
