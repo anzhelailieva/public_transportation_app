@@ -1,4 +1,10 @@
-import { MapContainer, Marker, TileLayer, Polyline } from "react-leaflet";
+import {
+  MapContainer,
+  FeatureGroup,
+  Marker,
+  TileLayer,
+  Polyline,
+} from "react-leaflet";
 import L from "leaflet";
 import PropTypes from "prop-types";
 import "./leaflet.css";
@@ -17,34 +23,35 @@ export default function Map({ coordinates, segments }) {
         zoom={14}
         scrollWheelZoom={true}
       >
+        <FeatureGroup>
+          {coordinates.map((item, index) => {
+            if (item.location.lat && item.location.lon) {
+              return (
+                <Marker
+                  key={`${item.id}-${index}`}
+                  icon={markerIcon}
+                  position={[item.location.lat, item.location.lon]}
+                />
+              );
+            }
+            return null;
+          })}
+          {segments && (
+            <Polyline
+              pathOptions={colorOptions}
+              positions={segments}
+              eventHandlers={{
+                click: (e) => {
+                  console.log("polyline clicked", e);
+                },
+              }}
+            />
+          )}
+        </FeatureGroup>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {coordinates.map((item, index) => {
-          if (item.location.lat && item.location.lon) {
-            return (
-              <Marker
-                key={`${item.id}-${index}`}
-                icon={markerIcon}
-                position={[item.location.lat, item.location.lon]}
-              />
-            );
-          }
-          return null;
-        })}
-        {/* TODO: update the polyline with the new segments  */}
-        {segments && (
-          <Polyline
-            pathOptions={colorOptions}
-            positions={segments}
-            eventHandlers={{
-              click: (e) => {
-                console.log("polyline clicked", e);
-              },
-            }}
-          />
-        )}
       </MapContainer>
     </>
   );

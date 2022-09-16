@@ -1,4 +1,8 @@
-import { StyledStopsComponent, StyledWrapper, IconContainer } from "./Stops.style";
+import {
+  StyledStopsComponent,
+  StyledWrapper,
+  IconContainer,
+} from "./Stops.style";
 import {
   StyledList,
   StyledListItem,
@@ -14,25 +18,21 @@ export default function Stops() {
   const routesData = useSelector((state) => state.map.routes);
   const { id } = useParams();
   let route = {};
-  let segmentsCoordinates = {};
+  let segmentsCoordinates = [];
   let stopsNames = [];
-  const imgUrl = require('../../icons/bus-stop-icon.png');
+  const imgUrl = require("../../icons/bus-stop-icon.png");
 
   Object.entries(routesData).filter(([key, value]) => {
     if (routesData[key].id == id) {
-      return (route = { ...routesData[key] });
+       route = { ...routesData[key] };
     }
+    return route;
   });
 
-  const { segments, stops } = route;
-
-  if (segments !== undefined && segments !== null) {
-    segments.map((el) => {
-      return (segmentsCoordinates = [...el.coordinates]);
-    });
-  }
+  const { stops } = route;
 
   if (stops !== undefined && stops !== null) {
+    stops.map((el) =>  segmentsCoordinates.push(el.location));
     stops.map((el) => stopsNames.push(el.name));
   }
 
@@ -47,7 +47,7 @@ export default function Stops() {
                 <StyledListItem key={index}>
                   <StyledLink>
                     <IconContainer>
-                      <Image src={imgUrl} alt={"bus-stop-icon"}/>
+                      <Image src={imgUrl} alt={"bus-stop-icon"} />
                       <span>{item}</span>
                     </IconContainer>
                   </StyledLink>
@@ -56,7 +56,7 @@ export default function Stops() {
             })}
         </StyledList>
       </StyledWrapper>
-      {stops && segmentsCoordinates && (
+      {stops && !!segmentsCoordinates && (
         <Map coordinates={stops} segments={segmentsCoordinates} />
       )}
     </StyledStopsComponent>
