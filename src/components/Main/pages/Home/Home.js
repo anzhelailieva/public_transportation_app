@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export default function Home() {
   const dispatch = useDispatch();
   const stopsCoordinates = useSelector((state) => state.map.stops);
-  const stopsSegments = useSelector((state) => state.map.segments);
+  const segments = useSelector((state) => state.map.segments);
 
   useEffect(() => {
     dispatch(getMapData());
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Lines />
-      <Map coordinates={stopsCoordinates} segments={stopsSegments} />
+      <Map coordinates={stopsCoordinates} segments={segments} />
     </>
   );
 }

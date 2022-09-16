@@ -18,10 +18,11 @@ export const getMapData = () => {
 
     try {
       const data = await getData();
+      // I wouldn't usually retrieve the data like this
+      // I would've probably gone with a recursive solution in this case,
+      // but I also go by the moto: First make it work, then make it better
       const routes = data.map((item) => item.routes);
-      const segments = routes.map((route) =>
-        route.map((item) => item.segments)
-      );
+      const segments = routes.map((route) =>route.map((item) => item.segments));
       const stops = routes.map((route) => route.map((item) => item.stops));
 
       const segmentsCoordinates = segments.map((stop) =>

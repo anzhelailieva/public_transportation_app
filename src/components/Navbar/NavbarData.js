@@ -4,16 +4,9 @@ export const NavbarData = [
     icon: "",
     path: "/",
   },
-
   {
     title: "Lines",
     icon: "",
     path: "/lines",
-  },
-
-  {
-    title: "Table",
-    icon: "",
-    path: "/table",
   },
 ];

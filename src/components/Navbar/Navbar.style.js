@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const StyledNavbar = styled.div`
     width: 100%;
     background-color: white;
-    border-bottom: 1px solid darkgrey;
+    border-bottom: 1px solid black;
 `;
 
 export const StyleList = styled.ul`
@@ -24,4 +24,15 @@ export const StyleListItem = styled.li`
 export const StyledLink = styled(Link)`
     text-decoration: none;
     color: black;
+    text-transform: uppercase;
+
+    &:active,
+    &:focus {
+        color: #A2C3A2;
+	}
+
+    &:hover {
+        color: #A2C3A2;
+        transition: color 100ms linear;
+	}
 `;

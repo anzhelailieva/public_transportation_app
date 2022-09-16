@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { getMapData } from "./store/map-actions";
 import Main from "./components/Main/Main";
-import Notification from "./components/UI/Notification";
 import Navbar from "./components/Navbar/Navbar";
-import { useEffect } from "react";
+import Notification from "./components/UI/Notification";
 import { StyledContainer } from "./components/Main/Main.style";
+import { useEffect } from "react";
 
 export default function App() {
   const dispatch = useDispatch();
