@@ -4,6 +4,7 @@ import {
   Marker,
   TileLayer,
   Polyline,
+  Popup,
 } from "react-leaflet";
 import L from "leaflet";
 import PropTypes from "prop-types";
@@ -31,7 +32,9 @@ export default function Map({ coordinates, segments }) {
                   key={`${item.id}-${index}`}
                   icon={markerIcon}
                   position={[item.location.lat, item.location.lon]}
-                />
+                >
+                  <Popup>{item.name}</Popup>
+                </Marker>
               );
             }
             return null;
@@ -59,5 +62,5 @@ export default function Map({ coordinates, segments }) {
 
 Map.propTypes = {
   coordinates: PropTypes.arrayOf(PropTypes.object).isRequired,
-  segments: PropTypes.arrayOf(PropTypes.object).isRequired,
+  segments: PropTypes.arrayOf(PropTypes.array).isRequired,
 };

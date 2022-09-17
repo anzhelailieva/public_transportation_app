@@ -17,8 +17,10 @@ import Image from "../Image/Image";
 export default function Stops() {
   const routesData = useSelector((state) => state.map.routes);
   const { id } = useParams();
+
   let route = {};
   let segmentsCoordinates = [];
+  let stopsCoordinates = [];
   let stopsNames = [];
   const imgUrl = require("../../icons/bus-stop-icon.png");
 
@@ -29,11 +31,15 @@ export default function Stops() {
     return route;
   });
 
-  const { stops } = route;
+  const { segments, stops } = route;
 
   if (stops !== undefined && stops !== null) {
-    stops.map((el) =>  segmentsCoordinates.push(el.location));
+    stops.map((el) =>  stopsCoordinates.push(el.location));
     stops.map((el) => stopsNames.push(el.name));
+  }
+
+  if (segments !== undefined && segments !== null) {
+    segments.map((el) =>  segmentsCoordinates.push(el.coordinates));
   }
 
   return (
