@@ -8,7 +8,6 @@ import {
   StyledListItem,
   StyledLink,
 } from "../Main/pages/Lines/Lines.styled";
-import Image from "../Image/Image";
 import Map from "../Map/Map";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -17,7 +16,6 @@ import { useSelector } from "react-redux";
 export default function Stops() {
   const routes = useSelector((state) => state.map.filteredRoutes);
   const { id } = useParams();
-  const imgUrl = require("../../icons/bus-stop-icon.png");
   let stopsNames = [];
   let routesDataItems = [];
 
@@ -46,7 +44,6 @@ export default function Stops() {
                 <StyledListItem key={index}>
                   <StyledLink>
                     <IconContainer>
-                      <Image src={imgUrl} alt={"bus-stop-icon"} />
                       <span>{item}</span>
                     </IconContainer>
                   </StyledLink>

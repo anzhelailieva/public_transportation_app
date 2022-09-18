@@ -1,12 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const filters = {
-  ALL: "ALL",
-  A: "A",
-  TB: "TB",
-  TM: "TM",
-};
-
 const mapSlice = createSlice({
   name: "map",
   initialState: {

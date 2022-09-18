@@ -4,7 +4,6 @@ import { getMapData } from "./store/map-actions";
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
 import Notification from "./components/UI/Notification";
-import { StyledContainer } from "./components/Main/Main.style";
 import { useEffect } from "react";
 
 export default function App() {
@@ -18,7 +17,6 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <StyledContainer>
         {notification && (
           <Notification
             status={notification.status}
@@ -28,7 +26,6 @@ export default function App() {
           />
         )}
         <Main />
-      </StyledContainer>
     </>
   );
 }

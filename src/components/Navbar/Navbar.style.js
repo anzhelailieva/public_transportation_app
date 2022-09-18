@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const StyledNavbar = styled.div`
-    width: 100%;
+export const StyledHeader = styled.header`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+`;
+
+export const StyledNavbar = styled.nav`
     background-color: white;
-    border-bottom: 1px solid black;
 `;
 
 export const StyleList = styled.ul`
@@ -12,12 +18,11 @@ export const StyleList = styled.ul`
     margin: 0;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-evenly;
 `;
 
 export const StyleListItem = styled.li`
     list-style: none;
-    margin-left: 3rem;
  
 `;
 
