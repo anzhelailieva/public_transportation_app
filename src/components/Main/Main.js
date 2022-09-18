@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { StyledMain } from "./Main.style";
 import Home from "./pages/Home";
-import React from "react";
 import Lines from "./pages/Lines/Lines";
+import React from "react";
+import { StyledMain } from "./Main.style";
 import Stops from "../Stops";
 
 export default function Main() {

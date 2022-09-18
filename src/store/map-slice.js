@@ -1,21 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const filters = {
+  ALL: "ALL",
+  A: "A",
+  TB: "TB",
+  TM: "TM",
+};
+
 const mapSlice = createSlice({
   name: "map",
   initialState: {
     routes: [],
-    stops: [],
-    segments: [],
+    filteredRoutes: [],
   },
   reducers: {
     setRoutes: (state, action) => {
-        state.routes = action.payload;
-      },
-    setStops: (state, action) => {
-      state.stops = action.payload;
+      state.routes = action.payload;
     },
-    setSegments: (state, action) => {
-      state.segments = action.payload;
+    setFilteredRoutes: (state, action) => {
+      state.filteredRoutes = action.payload;
+    },
+    filterByTransportType(state, action) {
+      const filteredRoutes = state.routes.filter(
+        (route) => route.transportType === action.payload
+      );
+
+      return {
+        ...state,
+        filteredRoutes:
+          action.payload && action.payload !== "ALL"
+            ? filteredRoutes
+            : [...state.routes],
+      };
     },
     // Some error handling could also be done here:
     // setError: (state) => {...},

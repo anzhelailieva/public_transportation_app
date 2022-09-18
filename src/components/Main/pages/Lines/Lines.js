@@ -4,13 +4,13 @@ import {
   StyledListItem,
   StyledLink,
 } from "./Lines.styled";
+import Image from "../../../Image/Image";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import React from "react";
-import Image from "../../../Image/Image";
 
 export default function Lines() {
-  const routes = useSelector((state) => state.map.routes);
+  const routes = useSelector((state) => state.map.filteredRoutes);
   const navigate = useNavigate();
   const imgUrl = require("../../../../icons/bus.png");
 

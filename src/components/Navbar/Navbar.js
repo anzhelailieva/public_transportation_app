@@ -1,6 +1,11 @@
-import React from "react";
+import {
+  StyledNavbar,
+  StyleList,
+  StyleListItem,
+  StyledLink,
+} from "./Navbar.style";
 import { NavbarData } from "./NavbarData";
-import { StyledNavbar, StyleList, StyleListItem, StyledLink} from "./Navbar.style";
+import React from "react";
 
 export default function Navbar() {
   return (
@@ -8,8 +13,11 @@ export default function Navbar() {
       <StyleList>
         {NavbarData.map((item, index) => {
           return (
-            <StyleListItem key={index} className='nav-text'>
-              <StyledLink to={item.path}>{item.icon}<span>{item.title}</span></StyledLink>
+            <StyleListItem key={index} className="nav-text">
+              <StyledLink to={item.path}>
+                {item.icon}
+                <span>{item.title}</span>
+              </StyledLink>
             </StyleListItem>
           );
         })}
