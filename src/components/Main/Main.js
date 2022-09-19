@@ -1,17 +1,17 @@
 import { Route, Routes } from "react-router-dom";
-import { StyledMain } from "./Main.style";
 import Home from "./pages/Home";
 import React from "react";
-import Lines from "./pages/Lines/Lines";
+import { StyledMain } from "./Main.style";
 import Stops from "../Stops";
+import PageNotFound from "./pages/PageNotFound";
 
 export default function Main() {
   return (
     <StyledMain>
       <Routes>
         <Route path="/" exact element={<Home />} />
-        <Route path="/lines" exact element={<Lines />}/>
-        <Route path="/lines/:id" element={<Stops />} />
+        <Route path="/line/:id" element={<Stops />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </StyledMain>
   );

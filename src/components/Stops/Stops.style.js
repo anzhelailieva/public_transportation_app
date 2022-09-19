@@ -11,17 +11,14 @@ export const StyledStopsComponent = styled.div`
 
 export const StyledWrapper = styled.div`
   overflow: auto;
+
+  h3 {
+    background-color: #ecf0f1;
+    color: #6c6d6d;
+    padding: .5rem;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+  }
 `;
 
-export const IconContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-direction: row;
-
-    img {
-        width: 25px;
-        height: 25px;
-        margin-right: 1rem;  
-    }
-`;

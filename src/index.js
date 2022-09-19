@@ -1,4 +1,4 @@
-import App from "./App";
+import App from "./components/App/App";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import React from "react";
