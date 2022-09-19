@@ -14,7 +14,7 @@ export default function Lines() {
   const routes = useSelector((state) => state.map.filteredRoutes);
   const navigate = useNavigate();
 
-  const handleChangeRoute = (id) => navigate(`/lines/${id}`);
+  const handleChangeRoute = (id) => navigate(`/line/${id}`);
 
   return (
     <StyledContainer>

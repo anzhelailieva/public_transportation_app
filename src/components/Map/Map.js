@@ -20,6 +20,7 @@ export default function Map({ stops, routesDataItems }) {
     ? routesDataItems
     : routes.map((item) => ({
         routeId: item.id,
+        routeName: item.name,
         segments: item.segments.map((item) => item.coordinates),
         stops: item.stops.map((item) => item),
       }));

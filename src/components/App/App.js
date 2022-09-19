@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
-import { getMapData } from "./store/map-actions";
-import Main from "./components/Main/Main";
-import Header from "./components/Header/Header";
-import Notification from "./components/UI/Notification";
+import { getMapData } from "../../store/map-actions";
+import Main from "../Main/Main";
+import Header from "../Header/Header";
+import Notification from "../UI/Notification";
 import { useEffect } from "react";
+import {StyledContainer} from './App.styled'
 
 export default function App() {
   const dispatch = useDispatch();
@@ -15,8 +15,8 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <>
-      <Header />
+      <StyledContainer>
+        <Header />
         {notification && (
           <Notification
             status={notification.status}
@@ -26,6 +26,6 @@ export default function App() {
           />
         )}
         <Main />
-    </>
+      </StyledContainer>
   );
 }

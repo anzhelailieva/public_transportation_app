@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <StyledHeader>
         <StyledLink to={'/'}>
-        <Title title={"Some title"}></Title>
+        <Title title={"Theorebus =)"}></Title>
         </StyledLink>
     </StyledHeader>
   );

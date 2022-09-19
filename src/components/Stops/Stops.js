@@ -18,8 +18,10 @@ export default function Stops() {
       return (routesDataItems = [
         {
           routeId: routes[key].id,
+          routeName: routes[key].name,
           segments: routes[key].segments.map((item) => item.coordinates),
           stops: routes[key].stops,
+          transportType: routes[key].transportType
         },
       ]);
     }
@@ -36,6 +38,8 @@ export default function Stops() {
     <StyledStopsComponent>
       <StyledWrapper>
         <GoBackTo path={"/"} text={"Обратно към всички линии"} children={<Icon iconType={"goBack"}></Icon>}></GoBackTo>
+        <Icon iconType={routesDataItems[0].transportType}></Icon>
+        <h3>{routesDataItems[0].routeName}</h3>
         <StyledList>
           {stopsNames &&
             stopsNames.map((item, index) => {

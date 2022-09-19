@@ -7,7 +7,7 @@ export const StyledContainer = styled.div`
 export const StyledList = styled.ul`
     margin: 0 0 3rem 0;
     padding: 1rem;
-    height: 40rem;
+    height: 38rem;
     overflow-y: scroll;
 `;
 
