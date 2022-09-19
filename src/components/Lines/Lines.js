@@ -4,11 +4,11 @@ import {
   StyledListItem,
   StyledLink,
 } from "./Lines.styled";
-import Filter from "../Filter/Filter"
+import Filter from "../Filter/Filter";
+import Icon from '../Icon/Icon.js';
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Icon from '../Icon/Icon.js'
 
 export default function Lines() {
   const routes = useSelector((state) => state.map.filteredRoutes);

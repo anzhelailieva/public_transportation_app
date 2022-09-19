@@ -1,16 +1,16 @@
-import React from 'react'
+import { StyledPageContainer, StyledPageTitle } from './PageNotFound.style'
 import GoBackTo from '../../../GoBackTo'
-import { StyledPageContainer, StyledPageTitle, StyledPageContent } from './PageNotFound.style'
+import Icon from '../../../Icon'
+import React from 'react'
 
-export default function PageNotFound() {
+export default function PageNotFound() {  
   return (
     <StyledPageContainer>
         <StyledPageTitle>404</StyledPageTitle>
-        <StyledPageContent>
-            Well, this is awkward..
-            We couldn't find what you were looking for.
-            <GoBackTo path={'/'} text={'Go back to home page'}/>
-        </StyledPageContent>
+        <p>
+          Well, this is awkward. We could not find what you were looking for.
+        </p>
+        <GoBackTo path={"/"} text={"Back to home page"} children={<Icon iconType={"goBack"}></Icon>}></GoBackTo>
     </StyledPageContainer>
   )
 }

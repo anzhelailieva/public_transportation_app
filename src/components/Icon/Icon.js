@@ -1,7 +1,7 @@
+import { FILTERS, TYPES } from "../../shared/CONSTANT";
 import { IconContainer } from "./Icon.style";
 import React from "react";
 import PropTypes from "prop-types";
-import { FILTERS, TYPES } from "../../shared/CONSTANT";
 
 export default function Icon({ iconType }) {
   const getType = (type) => {

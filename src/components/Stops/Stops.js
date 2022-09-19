@@ -1,11 +1,11 @@
 import { StyledStopsComponent, StyledWrapper } from "./Stops.style";
 import { StyledList, StyledListItem, StyledLink } from "../Lines/Lines.styled";
+import GoBackTo from "../GoBackTo";
+import Icon from "../Icon";
 import Map from "../Map/Map";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Icon from "../Icon";
-import GoBackTo from "../GoBackTo";
 
 export default function Stops() {
   const routes = useSelector((state) => state.map.filteredRoutes);
@@ -44,7 +44,6 @@ export default function Stops() {
           {stopsNames &&
             stopsNames.map((item, index) => {
               return (
-                // it's not a good practice to have the index as key, but in this case is just for testing purposes
                 <StyledListItem key={index}>
                   <Icon iconType={"stop"}></Icon>
                   <StyledLink>{item}</StyledLink>

@@ -35,7 +35,7 @@ export default function Map({ stops, routesDataItems }) {
     iconSize: [35, 35],
   });
 
-  const handleChangeRoute = (id) => navigate(`/lines/${id}`);
+  const handleChangeRoute = (id) => navigate(`/line/${id}`);
 
   return (
     <>
