@@ -1,29 +1,51 @@
-import {IconContainer} from './Icon.style'
-import React from 'react';
+import { IconContainer } from "./Icon.style";
+import React from "react";
 import PropTypes from "prop-types";
-import { FILTERS } from '../../shared/CONSTANT';
-import { type } from '@testing-library/user-event/dist/type';
+import { FILTERS, TYPES } from "../../shared/CONSTANT";
 
-export default function Icon({transportType}) {
-
+export default function Icon({ iconType }) {
   const getType = (type) => {
     switch (type) {
       case FILTERS.A:
-        return <img src={require("../../icons/bus-icon.png")}/>
+        return (
+          <img src={require("../../icons/bus-icon.png")} alt={`icon-${type}`} />
+        );
       case FILTERS.TB:
-        return <img src={require("../../icons/tram-icon.png")}/>
-        case FILTERS.TM:
-          return <img src={require("../../icons/metro_icon.png")}/>
+        return (
+          <img
+            src={require("../../icons/tram-icon.png")}
+            alt={`icon-${type}`}
+          />
+        );
+      case FILTERS.TM:
+        return (
+          <img
+            src={require("../../icons/metro_icon.png")}
+            alt={`icon-${type}`}
+          />
+        );
+      case TYPES.STOP:
+        return (
+          <img
+            src={require("../../icons/bus-stop-icon.png")}
+            alt={`icon-${type}`}
+          />
+        );
+      case TYPES.GOBACK:
+        return (
+          <img
+            src={require("../../icons/arrow-left.png")}
+            alt={`icon-${type}`}
+          />
+        );
       default:
         return null;
     }
-  }
+  };
 
-  return (
-    <IconContainer>{getType(transportType)}</IconContainer>
-  )
+  return <IconContainer>{getType(iconType)}</IconContainer>;
 }
 
 Icon.propTypes = {
-  transportType: PropTypes.string.isRequired,
+  iconType: PropTypes.string.isRequired,
 };

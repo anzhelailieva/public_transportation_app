@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { getMapData } from "./store/map-actions";
 import Main from "./components/Main/Main";
-import Navbar from "./components/Navbar/Navbar";
+import Header from "./components/Header/Header";
 import Notification from "./components/UI/Notification";
 import { useEffect } from "react";
 
@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <>
-      <Navbar />
+      <Header />
         {notification && (
           <Notification
             status={notification.status}

@@ -4,11 +4,11 @@ import {
   StyledListItem,
   StyledLink,
 } from "./Lines.styled";
-import Filter from "../../../Filter/Filter"
+import Filter from "../Filter/Filter"
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Icon from '../../../Icon/Icon.js'
+import Icon from '../Icon/Icon.js'
 
 export default function Lines() {
   const routes = useSelector((state) => state.map.filteredRoutes);
@@ -23,7 +23,7 @@ export default function Lines() {
         {routes.map((item) => {
           return (
             <StyledListItem key={item.id}>
-              <Icon transportType={item.transportType}></Icon>
+              <Icon iconType={item.transportType}></Icon>
               <StyledLink onClick={() => handleChangeRoute(item.id)}>
                 {item.name}
               </StyledLink>
